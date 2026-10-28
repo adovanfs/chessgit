@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adovan — Dunia di Balik Enam Puluh Empat Kotak</title>
+<meta name="theme-color" content="#040404"><meta property="og:title" content="Adovan — Dunia di Balik Enam Puluh Empat Kotak"><meta property="og:type" content="website"><meta name="description" content="Panduan catur yang mendalam: sejarah, filosofi, bidak, aturan, strategi, dan rahasia para grandmaster.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♞</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Hanken+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== 1. TOKEN WARNA & TIPOGRAFI ===== */
+:root{--bg:#040404;--bg2:#12110f;--tx:#efe8d8;--mu:#a39b8a;--gd:#d4af37;--rd:#8a1c28;--ln:#d4af3730;--lt:#cdbf9f;--dk:#3b352b;
+--se:'Cormorant Garamond',Georgia,serif;--sa:'Hanken Grotesk',system-ui,sans-serif}
+[data-theme=light]{--bg:#f5f0e4;--bg2:#e9e0cb;--tx:#1b1713;--mu:#5d5547;--gd:#8f6f0f;--ln:#8f6f0f40;--lt:#eadfc2;--dk:#a89368}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--tx);font:17px/1.75 var(--sa);transition:background .5s,color .5s;overflow-x:hidden}
+h1,h2,h3{font-family:var(--se);font-weight:500;line-height:1.1}
+h2{font-size:clamp(2.2rem,5vw,3.8rem);margin-bottom:1.2rem}
+h3{font-size:1.6rem;color:var(--gd)}
+p{color:var(--mu);max-width:62ch;margin-bottom:1rem}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:1px solid var(--ln)}
+:focus-visible{outline:2px solid var(--gd);outline-offset:3px}
+.w{max-width:1100px;margin:auto;padding:0 24px}
+.s{padding:clamp(90px,14vw,180px) 0;border-top:1px solid var(--ln);position:relative}
+.bab{font:italic 1.3rem var(--se);color:var(--rd);display:block;margin-bottom:.6rem;filter:brightness(1.6)}
+.lead{font:italic 1.5rem/1.5 var(--se);color:var(--tx);max-width:34ch}
+/* ===== 2. LOADER, PROGRESS, NAV, TOC ===== */
+#ld{position:fixed;inset:0;background:#040404;z-index:99;display:grid;place-content:center;text-align:center;transition:opacity .9s,visibility .9s}
+#ld.x{opacity:0;visibility:hidden}
+#ld i{font:normal 5rem/1 var(--se);color:var(--gd);animation:bob 1.6s ease-in-out infinite}
+#ld p{color:#8c8472;font:italic 1.2rem var(--se);margin:1rem auto}
+#ld b{display:block;height:1px;width:160px;margin:auto;background:linear-gradient(90deg,var(--gd) 50%,transparent 0) 0/200% 100%;animation:ldb 1.4s linear forwards}
+@keyframes bob{50%{transform:translateY(-12px) rotate(-6deg)}}@keyframes ldb{from{background-position:100% 0}to{background-position:0 0}}
+#pg{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--rd),var(--gd));z-index:60}
+header{position:fixed;top:0;width:100%;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px 28px;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--ln)}
+.lg{font:600 1.5rem var(--se);letter-spacing:.04em}.lg span{color:var(--gd)}
+nav{display:flex;gap:22px;font-size:.9rem}nav a{color:var(--mu);transition:color .3s}nav a:hover{color:var(--gd)}
+.tb{display:flex;gap:8px}.tb button{width:38px;height:38px;border-radius:50%;transition:.3s}.tb button:hover{border-color:var(--gd);color:var(--gd);transform:rotate(15deg)}
+#toc{position:fixed;left:14px;top:50%;transform:translateY(-50%);z-index:40;font-size:.85rem;background:color-mix(in srgb,var(--bg2) 92%,transparent);border:1px solid var(--ln);padding:14px 16px;max-width:200px;transition:.4s}
+#toc.c{padding:8px 12px}#toc.c ol{display:none}
+#toc button{border:0;color:var(--gd);font:italic 1.1rem var(--se);width:100%;text-align:left}
+#toc ol{list-style:none;padding:0;margin-top:8px}#toc a{display:block;padding:3px 0 3px 12px;color:var(--mu);border-left:1px solid var(--ln);transition:.3s}
+#toc a.on{color:var(--gd);border-color:var(--gd);padding-left:18px}
+@media(max-width:1560px){#toc{left:8px;top:auto;bottom:14px;transform:none}}
+@media(max-width:900px){nav{display:none}}
+/* ===== 3. HERO 3D ===== */
+#hero{min-height:100vh;display:grid;place-items:center;text-align:center;overflow:hidden;background:radial-gradient(ellipse at 50% 70%,#2a1a14 0,transparent 60%),var(--bg);padding:120px 0 80px}
+[data-theme=light] #hero{background:radial-gradient(ellipse at 50% 70%,#e3d3a8 0,transparent 60%),var(--bg)}
+#hero h1{font-size:clamp(2.5rem,4.8vw,4.6rem);max-width:24ch;margin:auto;position:relative;z-index:2}
+#hero .sb{font:italic clamp(1.2rem,2.5vw,1.7rem) var(--se);color:var(--mu);max-width:36ch;margin:1.4rem auto 0;position:relative;z-index:2}
+.sc{perspective:900px;height:260px;margin:-30px 0 -10px;pointer-events:none}
+.b3{width:min(340px,70vw);aspect-ratio:1;margin:60px auto;display:grid;grid:repeat(8,1fr)/repeat(8,1fr);transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(0);animation:spin 40s linear infinite;box-shadow:0 0 90px #d4af3722}
+.b3 div{background:var(--dk);transform-style:preserve-3d;position:relative}.b3 div:nth-child(16n+1),.b3 div:nth-child(16n+3),.b3 div:nth-child(16n+5),.b3 div:nth-child(16n+7),.b3 div:nth-child(16n+10),.b3 div:nth-child(16n+12),.b3 div:nth-child(16n+14),.b3 div:nth-child(16n+16){background:var(--lt)}
+.b3 em{position:absolute;inset:0;display:grid;place-items:center;font:normal clamp(1.6rem,6vw,2.6rem)/1 var(--sa);animation:ub 40s linear infinite;transform:rotateX(-58deg) translateY(-35%)}
+@keyframes spin{to{transform:rotateX(58deg) rotateZ(360deg)}}@keyframes ub{to{transform:rotateZ(-360deg) rotateX(-58deg) translateY(-35%)}}
+.sd{position:absolute;bottom:26px;left:50%;width:22px;height:38px;border:1px solid var(--gd);border-radius:12px;transform:translateX(-50%)}.sd::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;background:var(--gd);animation:sdw 1.8s infinite}
+@keyframes sdw{to{transform:translateY(14px);opacity:0}}
+/* ===== 4. PAPAN, BIDAK, KOMPONEN ===== */
+.bd{position:relative;aspect-ratio:1;width:100%;max-width:400px;display:grid;grid:repeat(8,1fr)/repeat(8,1fr);border:1px solid var(--gd);box-shadow:0 20px 60px #0008;flex:none}
+.bd>div{background:var(--dk);position:relative}.bd>.l{background:var(--lt)}
+.pc{position:absolute;width:12.5%;height:12.5%;display:grid;place-items:center;font:normal clamp(1.3rem,5vw,2.3rem)/1 var(--sa);transition:left .9s cubic-bezier(.6,0,.2,1),top .9s cubic-bezier(.6,0,.2,1),opacity .5s,transform .5s;z-index:2;font-style:normal;pointer-events:none}
+.pc.w,.b3 .w{color:#f8f1dd;-webkit-text-stroke:.8px #000}.pc.b,.b3 .b{color:#17130f;-webkit-text-stroke:.8px var(--gd)}
+.pc.gone{opacity:0;transform:scale(.3)}
+.dt{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transform:scale(.3);transition:.35s}.dt::after{content:"";width:30%;height:30%;border-radius:50%;background:var(--gd)}.dt.k::after{width:80%;height:80%;background:0;border:3px solid var(--rd)}
+.bd.on .dt{opacity:.9;transform:none}
+.kg{box-shadow:inset 0 0 0 3px var(--rd),inset 0 0 25px var(--rd)}
+.rw{display:flex;gap:48px;align-items:center;flex-wrap:wrap;margin-top:3rem}.rw>div:first-child{flex:1 1 320px}
+.rw.rv2{flex-direction:row-reverse}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.5rem}.tabs button{padding:8px 16px;font-size:.9rem;transition:.3s}.tabs button:hover,.tabs .on{background:var(--gd);color:#000;border-color:var(--gd)}
+.rp{margin-top:1rem;padding:8px 18px}.rp:hover{border-color:var(--gd);color:var(--gd)}
+.pcard{padding:70px 0;border-top:1px dashed var(--ln)}.pcard .g{font:normal 5rem/1 var(--sa);color:var(--gd)}
+.st{display:grid;grid:auto/repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:1rem}.st div{border-left:2px solid var(--gd);padding:4px 14px;font-size:.92rem;color:var(--mu)}.st b{display:block;color:var(--tx);font-weight:500}
+.gr{display:grid;grid:auto/repeat(auto-fit,minmax(250px,1fr));gap:22px;margin-top:2.5rem}
+.cd{padding:30px;border:1px solid var(--ln);background:var(--bg2);transition:.45s;position:relative;overflow:hidden}
+.cd::before{content:"";position:absolute;left:0;top:0;height:2px;width:0;background:var(--gd);transition:width .6s}
+.cd:hover{transform:translateY(-6px);border-color:var(--gd)}.cd:hover::before{width:100%}.cd p{margin:0;font-size:.95rem}.cd h3{margin-bottom:.5rem;font-size:1.45rem}
+.cd.big{grid-column:1/-1}
+/* timeline */
+.tl{display:flex;justify-content:space-between;position:relative;margin:3rem 0 2rem;gap:6px}.tl::before{content:"";position:absolute;left:0;right:0;top:19px;height:1px;background:var(--ln)}
+.tl button{position:relative;border-radius:50%;width:38px;height:38px;background:var(--bg);flex:none;transition:.4s}.tl button.on{background:var(--gd);color:#000;transform:scale(1.35);box-shadow:0 0 25px var(--gd)}
+.tp{min-height:260px;border:1px solid var(--ln);padding:34px;background:var(--bg2);transition:opacity .35s}.tp h3{font-size:2.2rem}.tp small{color:var(--rd);filter:brightness(1.7);font:italic 1.3rem var(--se)}
+/* faq */
+details{border-bottom:1px solid var(--ln);padding:20px 0}summary{cursor:pointer;font:500 1.5rem var(--se);list-style:none;display:flex;justify-content:space-between;transition:color .3s}summary::after{content:"+";color:var(--gd);transition:transform .4s}details[open] summary::after{transform:rotate(135deg)}summary:hover{color:var(--gd)}details p{margin-top:12px}
+#end{text-align:center;padding:200px 0;background:radial-gradient(ellipse at 50% 100%,#2a0f12 0,transparent 65%)}
+#end blockquote{font:italic clamp(1.8rem,4.5vw,3.2rem)/1.3 var(--se);max-width:20ch;margin:2rem auto}#end p{margin:auto;text-align:center}
+footer{text-align:center;padding:30px;color:var(--mu);font-size:.85rem;border-top:1px solid var(--ln)}
+.rv{opacity:0;transform:translateY(34px);transition:opacity 1s,transform 1s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+input[type=range]{width:100%;accent-color:var(--gd);margin:1.2rem 0}
+.gn{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font:500 1.4rem var(--se)}.gn span{color:var(--gd)}
+.gb{display:grid;grid:repeat(8,1fr)/repeat(8,1fr);gap:3px;margin-top:1rem;max-width:320px}.gb i{aspect-ratio:1;background:var(--ln);transition:background .25s}.gb i.o{background:var(--gd)}
+.bd>div.v{background:var(--gd);color:#000;font:600 .7rem var(--sa);display:grid;place-items:center}
+.xt{margin-top:3rem;padding-top:3rem;border-top:1px dashed var(--ln);display:flex;gap:40px;flex-wrap:wrap;align-items:center}.xt>div:first-child{flex:1 1 280px}.xt .rp{margin-right:8px}
+.bd>div{cursor:pointer}
+.cd.big:hover{transform:none}.cd summary{font-size:1.3rem}.cd details{padding:14px 0}.cd details p{max-width:70ch}.tp p{margin-bottom:1.1rem}
+
+/* ===== VISUAL SINEMATIK ===== */
+.pc svg{width:82%;height:82%;fill:currentColor;stroke:#000;stroke-width:1.3;stroke-linejoin:round;filter:drop-shadow(0 3px 3px #000a)}.pc.b svg{stroke:var(--gd)}
+.pcard .g svg{width:96px;height:96px;fill:var(--gd);stroke:var(--gd);stroke-width:1}
+.b3 em{padding:4%}.b3 em svg{width:100%;height:100%;fill:currentColor;stroke:#000;stroke-width:1.3;stroke-linejoin:round}.b3 .b svg{stroke:var(--gd)}
+.b3{border:5px solid #3a2612;outline:1px solid var(--gd);box-shadow:0 0 120px #d4af3733,0 40px 80px #000}
+#hero{position:relative}#hero .w{position:relative;z-index:2}
+#hero::before{content:"";position:absolute;inset:-10% 0 0;background:conic-gradient(from 168deg at 50% -8%,transparent 0 2%,#d4af3744 7%,transparent 13%);transform-origin:50% 0;animation:sway 9s ease-in-out infinite alternate;pointer-events:none}
+@keyframes sway{to{transform:rotate(8deg)}}
+.dust{position:absolute;bottom:-10px;border-radius:50%;background:var(--gd);box-shadow:0 0 9px var(--gd);opacity:0;animation:rise linear infinite;pointer-events:none}
+@keyframes rise{10%{opacity:.95}85%{opacity:.5}to{transform:translate(50px,-105vh);opacity:0}}
+#hero h1,.s h2{background:linear-gradient(100deg,var(--tx) 0 40%,var(--gd) 50%,var(--tx) 60% 100%) 0 0/200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shn 7s linear infinite}
+@keyframes shn{from{background-position:100% 0}to{background-position:-100% 0}}
+body::before{content:"";position:fixed;inset:0;z-index:31;pointer-events:none;opacity:.06;background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27160%27 height=%27160%27%3E%3Cfilter id=%27n%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%27.9%27 numOctaves=%272%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27/%3E%3C/svg%3E")}
+body::after{content:"";position:fixed;inset:0;z-index:30;pointer-events:none;background:radial-gradient(ellipse at center,transparent 40%,#000c 100%)}
+[data-theme=light] body::after{background:radial-gradient(ellipse at center,transparent 50%,#8f6f0f44 100%)}
+.bab{font:italic 600 clamp(4rem,13vw,9rem)/.9 var(--se);color:transparent;-webkit-text-stroke:1px var(--gd);opacity:.55;display:block;margin:0 0 -.15em;filter:none}
+.s::before{content:"";position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:min(288px,60%);height:12px;background:repeating-conic-gradient(var(--gd) 0 25%,var(--bg) 0 50%) 0 0/12px 12px}
+.sk{position:absolute;left:-999px;top:8px;z-index:100;background:var(--gd);color:#000;padding:8px 14px}.sk:focus{left:8px}
+#hero:not(.vis) *,#hero:not(.vis)::before{animation-play-state:paused!important}.s h2:not(.vis){animation-play-state:paused}html.hid *{animation-play-state:paused!important}
+@media(max-width:600px){.dust:nth-child(n+22){display:none}body::before{display:none}.s{padding:80px 0}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="K" viewBox="0 0 45 45"><path d="M22.5 3v8M18.5 6.5h8" fill="none" stroke-width="2.4"/><path d="M22.5 12c5.5 0 10 3.2 10 7.5 0 3-2 5.2-4.5 6.8l2.5 6.7h-16l2.5-6.7c-2.5-1.6-4.5-3.8-4.5-6.8 0-4.3 4.5-7.5 10-7.5z"/><path d="M10.5 41v-3.5c0-2.2 2.2-3.5 4.5-3.5h15c2.3 0 4.5 1.3 4.5 3.5V41z"/></symbol>
+<symbol id="Q" viewBox="0 0 45 45"><path d="M8.5 14l5.5 18h17l5.5-18-7 8-3.5-12.5-4 10.5-4-10.5-3.5 12.5z"/><circle cx="8.5" cy="12.5" r="2.4"/><circle cx="15" cy="8" r="2.4"/><circle cx="22.5" cy="6.5" r="2.4"/><circle cx="30" cy="8" r="2.4"/><circle cx="36.5" cy="12.5" r="2.4"/><path d="M10.5 41v-3.5c0-2.2 2.2-3.5 4.5-3.5h15c2.3 0 4.5 1.3 4.5 3.5V41z"/></symbol>
+<symbol id="R" viewBox="0 0 45 45"><path d="M11.5 8.5h5v4h3.5v-4h5v4h3.5v-4h5v10.5l-4 3.5v10.5l4 4V41h-22.5v-4l4-4V22.5l-4-3.5z"/></symbol>
+<symbol id="B" viewBox="0 0 45 45"><path d="M22.5 4.5a3.2 3.2 0 0 1 2 5.7c3.300 2 5.500 5 5.500 9 0 3-1.600 5.200-3.500 6.800l1.200 3h-11.400l1.200-3c-1.900-1.600-3.500-3.800-3.500-6.800 0-4 2.200-7 5.500-9a3.200 3.200 0 0 1 2-5.700z"/><path d="M10.5 41v-3.5c0-2.2 2.2-3.5 4.5-3.5h15c2.3 0 4.5 1.3 4.5 3.5V41z"/></symbol>
+<symbol id="N" viewBox="0 0 45 45"><path d="M12 41c0-11 1.500-17 7-21l-3.500-3.500 2-8 4.500 2.500c1.500-2.500 4-3.500 6-3C35.500 10 36 20 36 41z"/><circle cx="21" cy="15" r="1.300" fill="#000" stroke="none"/></symbol>
+<symbol id="P" viewBox="0 0 45 45"><circle cx="22.5" cy="11.5" r="5.500"/><path d="M18 18h9l-1 3c1.500 4 4.500 7 4.500 12h-15c0-5 3-8 4.500-12z"/><path d="M10.5 41v-3.5c0-2.2 2.2-3.5 4.5-3.5h15c2.3 0 4.5 1.3 4.5 3.5V41z"/></symbol>
+</defs></svg>
+<a class="sk" href="#sejarah">Lewati ke konten</a>
+<!-- Loader bertema catur -->
+<div id="ld"><i>♞</i><p>Menata papan…</p><b></b></div>
+<div id="pg"></div>
+<header>
+  <a class="lg" href="#hero"><span>♞</span> Adovan</a>
+  <nav><a href="#sejarah">Sejarah</a><a href="#filosofi">Filosofi</a><a href="#bidak">Bidak</a><a href="#aturan">Aturan</a><a href="#strategi">Strategi</a><a href="#rahasia">Rahasia</a><a href="#faq">FAQ</a></nav>
+  <div class="tb"><button id="th" aria-label="Ganti tema terang atau gelap">☾</button></div>
+</header>
+<aside id="toc" class="c"><button id="tt" aria-expanded="false">Daftar isi ▾</button><ol id="tl"></ol></aside>
+
+<main>
+<!-- ===== HERO ===== -->
+<section id="hero" data-t="Pembuka">
+  <div class="w">
+    <h1>Enam puluh empat kotak. Satu pikiran yang tak pernah selesai.</h1>
+    <p class="sb">Sebelum menjadi permainan, catur adalah pertanyaan yang diwariskan lintas kerajaan. Mari kita masuk.</p>
+    <div class="sc"><div class="b3" id="b3"></div></div>
+  </div>
+  <div class="sd" aria-hidden="true"></div>
+</section>
+
+<!-- ===== 1. SEJARAH ===== -->
+<section class="s" id="sejarah" data-t="Sejarah"><div class="w">
+  <span class="bab rv">Bab I</span><h2 class="rv">Dari sebuah medan perang di India</h2>
+  <p class="rv lead">Tak ada yang tahu siapa yang pertama kali menggeser sebuah bidak. Yang kita punya hanyalah jejak.</p>
+  <div class="tl" id="tlb" role="tablist"></div><div class="tp" id="tlp" aria-live="polite"></div>
+  <div class="cd rv" style="margin-top:3rem"><h3>Legenda butir gandum</h3><p>Konon penemu catur meminta hadiah sederhana: satu butir gandum di kotak pertama, lalu digandakan di setiap kotak berikutnya. Geser untuk melihat apa yang terjadi.</p><input type="range" id="gr" min="1" max="64" value="1" aria-label="Nomor kotak"><div class="gn"><b id="gk"></b><span id="gv"></span></div><p id="gt" style="margin:.6rem 0 0;color:var(--tx)"></p><div class="gb" id="gbar"></div></div>
+</div></section>
+
+<!-- ===== 2. FILOSOFI ===== -->
+<section class="s" id="filosofi" data-t="Filosofi"><div class="w">
+  <span class="bab rv">Bab II</span><h2 class="rv">Cermin yang tidak berbohong</h2>
+  <p class="rv">Di papan, tak ada keberuntungan yang bisa disalahkan. Setiap langkah adalah pengakuan: inilah yang kupikirkan, inilah yang kutakutkan, inilah yang kuinginkan.</p>
+  <div class="gr">
+    <div class="cd rv"><h3>Kehidupan</h3><p>Setiap keputusan menutup pintu lain. Anda tidak bisa menarik langkah kembali, hanya belajar hidup bersama konsekuensinya.</p></div>
+    <div class="cd rv"><h3>Perang</h3><p>Dua pasukan setara bertemu tanpa darah. Catur mengajarkan seni berperang yang paling sunyi: menang tanpa memusnahkan.</p></div>
+    <div class="cd rv"><h3>Strategi</h3><p>Pengorbanan hari ini dapat menjadi kemenangan esok. Kesabaran sering mengalahkan kecerdikan.</p></div>
+    <div class="cd rv"><h3>Karakter</h3><p>Ada yang bermain nekat, ada yang hati-hati, ada yang takut kalah. Papan membaca watak lebih jujur daripada kata-kata.</p></div>
+    <div class="cd big rv"><h3>Renungan di atas papan</h3><details><summary>Waktu</summary><p>Di papan, waktu bukan jam di dinding, melainkan lawan yang ketiga. Setiap pikiran yang kau habiskan hari ini mengurangi pikiran yang tersisa untuk esok. Pemain yang matang belajar bahwa menunda keputusan pun adalah keputusan, dan langkah yang tepat sering datang terlambat bagi mereka yang gelisah.</p></details><details><summary>Risiko</summary><p>Tak ada langkah tanpa harga. Mengorbankan sebuah bidak adalah taruhan atas sesuatu yang belum terlihat. Yang terlalu takut berjudi akan mati pelan-pelan dalam posisi yang aman; yang berjudi tanpa hitungan akan runtuh dengan cepat. Keberanian di sini bukan nekat, melainkan kesediaan membayar harga yang sudah kau pahami.</p></details><details><summary>Kehilangan</summary><p>Setiap partai adalah latihan melepas. Bidak yang kau sayangi harus direlakan demi sesuatu yang lebih jauh. Kau belajar menimbang yang hilang dan yang didapat tanpa menyangkal bahwa kehilangan itu terasa. Ada kedewasaan yang hanya bisa diajarkan oleh papan yang perlahan menjadi sepi.</p></details><details><summary>Kendali</summary><p>Kau mengendalikan setiap bidakmu dan tak satu pun hati lawan. Seluruh seni catur ada di batas itu: melakukan yang terbaik dari apa yang bisa kau kendalikan, lalu menerima apa yang dilakukan orang lain. Ketenangan lahir bukan dari menguasai papan, melainkan dari berdamai dengan apa yang tak bisa kau kuasai.</p></details></div><div class="cd big rv"><h3>Simbol setiap bidak</h3><details><summary>Raja</summary><p>Raja adalah satu-satunya bidak yang tak boleh dimakan, dan yang paling sering bersembunyi. Ia melambangkan tujuan yang sebenarnya: bukan kemenangan yang megah, melainkan keberlangsungan. Semua pengorbanan di papan dilakukan demi dia yang nyaris tak bergerak.</p></details><details><summary>Ratu</summary><p>Ratu menyimpan seluruh kemampuan bidak lain dalam satu tubuh. Ia melambangkan potensi yang dilepas: kekuatan besar yang bila dipakai terlalu cepat menjadi sasaran. Kekuasaan yang bijak tahu kapan harus menunggu.</p></details><details><summary>Benteng</summary><p>Benteng tak tampak berguna sampai papan terbuka. Ia melambangkan fondasi: kerja diam-diam yang baru terbukti ketika segalanya menipis. Dalam hidup, banyak hal penting berwujud benteng.</p></details><details><summary>Gajah</summary><p>Gajah selalu berjalan miring dan setia pada satu warna. Ia melambangkan pandangan yang jauh sekaligus terbatas: kebenaran yang kau lihat dari satu sudut tak pernah seluruh papan.</p></details><details><summary>Kuda</summary><p>Kuda melompati apa yang menghalangi. Ia melambangkan akal dan kejutan: jalan yang tak lurus justru yang paling sulit ditebak. Ia mengingatkan bahwa rintangan kadang cukup dilewati, tak perlu dihancurkan.</p></details><details><summary>Pion</summary><p>Pion melangkah maju dan tak pernah mundur. Ia melambangkan rakyat kecil, waktu, dan keberanian yang biasa: sendirian ia lemah, bersama ia membentuk struktur segalanya, dan di ujung perjalanan ia bisa menjadi apa saja.</p></details></div>
+  </div>
+</div></section>
+
+<!-- ===== 3. BIDAK ===== -->
+<section class="s" id="bidak" data-t="Bidak"><div class="w">
+  <span class="bab rv">Bab III</span><h2 class="rv">Enam watak di atas papan</h2>
+  <p class="rv">Arahkan kursor (atau sentuh) papan mini untuk melihat jangkauan setiap bidak. Klik untuk melihatnya melangkah.</p>
+  <div id="pcs"></div>
+</div></section>
+
+<!-- ===== 4. ATURAN ===== -->
+<section class="s" id="aturan" data-t="Aturan"><div class="w">
+  <span class="bab rv">Bab IV</span><h2 class="rv">Hukum yang tak boleh dilanggar</h2>
+  <p class="rv">Papan berukuran 8×8 dengan kotak terang di pojok kanan bawah setiap pemain. Putih selalu memulai, lalu bergiliran. Tujuannya satu: membuat raja lawan tidak punya jalan keluar (skakmat). Bidak tidak boleh melompati bidak lain, kecuali kuda. Memakan berarti menempati kotak bidak lawan.</p>
+  <div class="rv" id="d1"><div class="rw"><div><div class="tabs"></div><h3 class="dh"></h3><p class="dtx"></p><button class="rp">↻ Putar ulang</button></div><div class="bd"></div></div></div>
+</div></section>
+
+<!-- ===== 5. STRATEGI ===== -->
+<section class="s" id="strategi" data-t="Strategi"><div class="w">
+  <span class="bab rv">Bab V</span><h2 class="rv">Berpikir tiga langkah di depan</h2>
+  <div class="gr">
+    <div class="cd rv"><h3>Kuasai pusat</h3><p>Kotak d4, e4, d5, e5 memberi bidak jangkauan terluas. Pion di pusat adalah jangkar bagi seluruh pasukan.</p></div>
+    <div class="cd rv"><h3>Kembangkan bidak</h3><p>Keluarkan kuda dan gajah lebih dulu. Jangan menggerakkan bidak yang sama dua kali tanpa alasan, dan tahan ratu sampai waktunya.</p></div>
+    <div class="cd rv"><h3>Amankan raja</h3><p>Rokade lebih awal. Raja yang aman memberi Anda kebebasan untuk menyerang.</p></div>
+  </div>
+  <h2 class="rv" style="margin-top:6rem;font-size:2.4rem">Empat taktik dasar</h2>
+  <div class="rv" id="d2"><div class="rw rv2"><div><div class="tabs"></div><h3 class="dh"></h3><p class="dtx"></p><button class="rp">↻ Putar ulang</button></div><div class="bd"></div></div></div>
+
+  <h2 class="rv" style="margin-top:6rem;font-size:2.4rem">Lima pembukaan klasik</h2>
+  <p class="rv">Pembukaan adalah kalimat pertama sebuah percakapan: ia menentukan nada, ruang, dan siapa yang mengejar siapa. Tiap tab berikut menampilkan satu jalur lazim; lawan Anda tentu boleh menyimpang kapan saja.</p>
+  <div class="rv" id="d3"><div class="rw"><div><div class="tabs"></div><h3 class="dh"></h3><p class="dtx"></p><button class="rp">↻ Putar ulang</button></div><div class="bd"></div></div></div>
+
+  <h2 class="rv" style="margin-top:6rem;font-size:2.4rem">Uji matamu: temukan langkahnya</h2>
+  <div class="rv" id="pz"><div class="rw rv2"><div><h3 class="pq"></h3><p class="pm" aria-live="polite"></p><button class="rp ph">Petunjuk</button><button class="rp pn">Soal berikutnya</button></div><div class="bd"></div></div></div>
+</div></section>
+
+<!-- ===== 6. RAHASIA ===== -->
+<section class="s" id="rahasia" data-t="Rahasia"><div class="w">
+  <span class="bab rv">Bab VI</span><h2 class="rv">Hal-hal yang jarang diceritakan</h2>
+  <div class="gr" id="fk"></div>
+  <h2 class="rv" style="margin-top:6rem;font-size:2.4rem">Dari The Turk hingga AlphaZero</h2>
+  <div class="tl" id="tlb2"></div><div class="tp" id="tlp2" aria-live="polite"></div>
+  <h2 class="rv" style="margin-top:6rem;font-size:2.4rem">Para penjaga papan</h2><div class="gr" id="tk"></div>
+  <p class="rv" style="margin-top:3rem">Kunci para grandmaster bukan menghitung lebih banyak, melainkan mengenali lebih cepat. Penelitian klasik Chase dan Simon (1973) menunjukkan bahwa master mengingat posisi nyata dengan mengelompokkannya menjadi pola bermakna, bukan bidak per bidak. Dan di bawah tekanan waktu, pemenang sering kali bukan yang paling cerdas, melainkan yang paling tenang setelah membuat kesalahan.</p>
+</div></section>
+
+<!-- ===== 7. MANFAAT ===== -->
+<section class="s" id="manfaat" data-t="Manfaat"><div class="w">
+  <span class="bab rv">Bab VII</span><h2 class="rv">Apa yang tertinggal setelah permainan usai</h2>
+  <div class="gr" id="mf"></div>
+  <p class="rv" style="margin-top:2rem;font-size:.9rem">Catatan jujur: manfaat bagi kecerdasan umum masih diperdebatkan para peneliti. Yang paling konsisten dirasakan pemain adalah disiplin berpikir dan ketenangan.</p>
+</div></section>
+
+<!-- ===== 8. FAQ ===== -->
+<section class="s" id="faq" data-t="FAQ"><div class="w">
+  <span class="bab rv">Bab VIII</span><h2 class="rv">Pertanyaan yang sering muncul</h2>
+  <div id="fq" class="rv"></div>
+</div></section>
+
+<!-- ===== 9. PENUTUP ===== -->
+<section class="s" id="end" data-t="Penutup"><div class="w">
+  <span class="bab rv">Penutup</span>
+  <blockquote class="rv">“Ketika permainan usai, raja dan pion kembali ke kotak yang sama.”</blockquote>
+  <p class="rv">Peribahasa Italia. Kemenangan dan kekalahan hanyalah babak. Yang tinggal adalah cara Anda berpikir, bersabar, dan bangkit. Papan sudah ditata. Langkah pertama selalu milik Anda.</p>
+</div></section>
+</main>
+<footer>© Adovan · Edukasi catur untuk siapa saja yang ingin berpikir lebih dalam.</footer>
+
+<script>
+/* ===== UTIL ===== */
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const G={K:'♚',Q:'♛',R:'♜',B:'♝',N:'♞',P:'♟'},F='abcdefgh';
+const xy=s=>[F.indexOf(s[0]),8-s[1]];
+const pcSvg=t=>`<svg viewBox="0 0 45 45"><use href="#${t}"/></svg>`;
+
+/* ===== LOADER ===== */
+addEventListener('load',()=>setTimeout(()=>$('#ld').classList.add('x'),1500));setTimeout(()=>$('#ld').classList.add('x'),5000);
+
+/* ===== TEMA ===== */
+$('#th').onclick=()=>{const d=document.documentElement,l=d.dataset.theme=='dark';d.dataset.theme=l?'light':'dark';$('#th').textContent=l?'☀':'☾'};
+
+/* ===== HERO 3D: papan berputar dengan bidak ===== */
+(()=>{const b=$('#b3'),bk='RNBQKBNR',at=i=>i<8?bk[i]:i<16||(i>47&&i<56)?'P':i>55?bk[i-56]:0;
+for(let i=0;i<64;i++){const d=document.createElement('div');if(at(i))d.innerHTML=`<em class="${i<16?'b':'w'}">${pcSvg(at(i))}</em>`;b.append(d)}})();
+
+/* ===== DEBU EMAS HERO ===== */
+(()=>{const h=$('#hero');for(let i=0;i<46;i++){const d=document.createElement('s'),z=Math.random()*3+1;d.className='dust';d.style.cssText=`left:${Math.random()*100}%;width:${z}px;height:${z}px;animation-duration:${8+Math.random()*12}s;animation-delay:-${Math.random()*20}s`;h.append(d)}})();
+
+/* ===== PAPAN GENERIK ===== */
+function mkSq(bd){for(let i=0;i<64;i++){const d=document.createElement('div');if((Math.floor(i/8)+i)%2==0)d.className='l';d.dataset.s=F[i%8]+(8-Math.floor(i/8));bd.append(d)}}
+function put(e,sq){const[c,r]=xy(sq);e.style.left=c*12.5+'%';e.style.top=r*12.5+'%';e.dataset.sq=sq}
+function mkPc(bd,code){const e=document.createElement('i');e.className='pc '+code[0];e.innerHTML=pcSvg(code[1]);put(e,code.slice(2));bd.append(e);return e}
+
+/* ===== DEMO ANIMASI (aturan khusus & taktik) ===== */
+function start(){const s=[];const back='RNBQKBNR';for(let i=0;i<8;i++){s.push('b'+back[i]+F[i]+8,'bP'+F[i]+7,'wP'+F[i]+2,'w'+back[i]+F[i]+1)}return s}
+function demo(root,list){
+  const tabs=$('.tabs',root),bd=$('.bd',root);let cur=0,tm=[];mkSq(bd);
+  list.forEach((s,i)=>{const b=document.createElement('button');b.textContent=s.n;b.onclick=()=>run(i);tabs.append(b)});
+  function run(i){cur=i;tm.forEach(clearTimeout);tm=[];$$('.pc',bd).forEach(x=>x.remove());$$('.kg',bd).forEach(x=>x.classList.remove('kg'));
+    $$('button',tabs).forEach((b,j)=>b.classList.toggle('on',j==i));const s=list[i];$('.dh',root).textContent=s.n;$('.dtx',root).textContent=s.d;
+    s.set.forEach(c=>mkPc(bd,c));
+    (s.m||[]).forEach((m,k)=>tm.push(setTimeout(()=>{const p=$(`.pc[data-sq=${m[0]}]`,bd);
+      if(m[2]){const x=$(`.pc[data-sq=${m[2]}]`,bd);x&&(x.classList.add('gone'),x.dataset.sq='')}
+      p&&put(p,m[1]);if(m[3]&&p)p.innerHTML=pcSvg(m[3]);
+      if(k==s.m.length-1&&s.k)tm.push(setTimeout(()=>$(`[data-s=${s.k}]`,bd).classList.add('kg'),950))},900+k*1500)))}
+  $('.rp',root).onclick=()=>run(cur);
+  new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){run(0);o.disconnect()}},{threshold:.4}).observe(root)}
+
+demo($('#d1'),[
+ {n:'Posisi awal',d:'Delapan pion di depan, lalu benteng, kuda, gajah, ratu, dan raja di baris belakang. Ratu selalu berdiri di kotak sewarna dengannya.',set:start()},
+ {n:'Skak',d:'Skak terjadi saat raja diserang. Pemain wajib segera menyingkirkan ancaman itu: menghindar, menghalangi, atau memakan penyerang.',set:['wKe1','wRa1','bKe8'],m:[['a1','a8']],k:'e8'},
+ {n:'Skakmat',d:'Raja diserang dan tak ada satu pun cara lolos. Pola klasik ini disebut mat di baris belakang: pion sendiri justru memenjarakan rajanya.',set:['wKg1','wRa1','bKg8','bPf7','bPg7','bPh7'],m:[['a1','a8']],k:'g8'},
+ {n:'Pat',d:'Raja tidak sedang diserang, tetapi tak ada langkah sah sama sekali. Hasilnya remis, bukan kemenangan. Banyak pemain yang unggul kehilangan kemenangan karena lengah di sini.',set:['wKb6','wQg7','bKa8'],m:[['g7','c7']]},
+ {n:'En passant',d:'Pion yang melompat dua kotak melewati pion lawan dapat dimakan seolah ia hanya melangkah satu kotak, tetapi hanya pada giliran berikutnya.',set:['wKe1','bKe8','wPe5','bPd7'],m:[['d7','d5'],['e5','d6','d5']]},
+ {n:'Rokade',d:'Satu-satunya langkah yang menggerakkan dua bidak: raja bergeser dua kotak ke arah benteng, benteng melompat ke sisi seberangnya. Tidak boleh bila keduanya sudah pernah bergerak atau raja sedang skak.',set:['wKe1','wRh1','bKe8'],m:[['e1','g1'],['h1','f1']]},
+ {n:'Promosi',d:'Pion yang tiba di baris terakhir harus berubah menjadi ratu, benteng, gajah, atau kuda. Hampir selalu ratu.',set:['wKe1','bKe8','wPa7'],m:[['a7','a8',null,'Q']]}
+]);
+demo($('#d2'),[
+ {n:'Garpu',d:'Satu bidak menyerang dua target sekaligus. Kuda di f7 menyerang raja dan benteng; raja harus menyelamatkan diri, benteng pun hilang.',set:['wNe5','wKg1','bKh8','bRd8'],m:[['e5','f7']],k:'h8'},
+ {n:'Pin',d:'Bidak lawan tak bisa bergerak karena di belakangnya ada bidak yang lebih berharga. Kuda di c6 terpaku oleh gajah pada raja.',set:['wBf1','wKg1','bNc6','bKe8'],m:[['f1','b5']]},
+ {n:'Skewer',d:'Kebalikan pin: bidak berharga di depan dipaksa menyingkir, dan bidak di belakangnya dimakan.',set:['wRa1','wKg1','bKe5','bQe8'],m:[['a1','e1'],['e5','d6'],['e1','e8','e8']]},
+ {n:'Serangan terbuka',d:'Sebuah bidak melangkah dan membuka garis serang bidak lain. Kuda memakan ratu sambil membuka skak dari benteng.',set:['wRe1','wNe5','wKg1','bQd7','bKe8'],m:[['e5','d7','d7']],k:'e8'}
+]);
+
+demo($('#d3'),[
+ {n:'Permainan Italia',d:'1.e4 e5 2.Nf3 Nc6 3.Bc4 Bc5. Gajah putih membidik f7, kotak yang hanya dijaga raja. Salah satu pembukaan tertua yang tercatat, rumah bagi permainan yang terbuka dan penuh serangan.',set:start(),m:[['e2','e4'],['e7','e5'],['g1','f3'],['b8','c6'],['f1','c4'],['f8','c5']]},
+ {n:'Pembelaan Sisilia',d:'1.e4 c5 2.Nf3 d6 3.d4 cxd4 4.Nxd4 Nf6. Hitam tak meniru, melainkan menantang dari sisi. Papan menjadi tak simetris, dan di situlah peluang menang yang dicari pemain hitam. Jawaban paling populer terhadap 1.e4.',set:start(),m:[['e2','e4'],['c7','c5'],['g1','f3'],['d7','d6'],['d2','d4'],['c5','d4','d4'],['f3','d4','d4'],['g8','f6']]},
+ {n:'Gambit Ratu',d:'1.d4 d5 2.c4 e6 3.Nc3 Nf6. Putih seolah menawarkan pion c; bila dimakan, pion itu dapat direbut kembali. Sebuah umpan yang sebenarnya hanya ajakan untuk menguasai pusat.',set:start(),m:[['d2','d4'],['d7','d5'],['c2','c4'],['e7','e6'],['b1','c3'],['g8','f6']]},
+ {n:'Ruy Lopez',d:'1.e4 e5 2.Nf3 Nc6 3.Bb5 a6 4.Ba4 Nf6. Gajah menekan kuda yang menjaga pion e5, tekanan halus yang baru terasa belasan langkah kemudian. Dinamai menurut Ruy López de Segura, pendeta Spanyol yang menulis buku catur pada 1561.',set:start(),m:[['e2','e4'],['e7','e5'],['g1','f3'],['b8','c6'],['f1','b5'],['a7','a6'],['b5','a4'],['g8','f6']]},
+ {n:'Pembelaan Prancis',d:'1.e4 e6 2.d4 d5 3.Nc3 Bb4. Hitam menerima ruang yang lebih sempit demi struktur yang kokoh, lalu menunggu saat membalas. Gajah hitam di c8 terkurung di balik pionnya sendiri, masalah klasik yang harus dipecahkan. Namanya berasal dari pertandingan jarak jauh Paris melawan London pada 1834.',set:start(),m:[['e2','e4'],['e7','e6'],['d2','d4'],['d7','d5'],['b1','c3'],['f8','b4']]}
+]);
+/* ===== BIDAK: papan mini interaktif ===== */
+const P=[
+['K','Raja','Tak ternilai','Melangkah satu kotak ke segala arah. Ia bukan pejuang di awal permainan, tetapi di babak akhir ia menjadi petarung aktif.','Mendekati akhir permainan, ia menjadi pendukung pion yang kuat.','Rapuh di tengah permainan; satu celah bisa berakibat fatal.'],
+['Q','Ratu','± 9 poin','Menggabungkan benteng dan gajah: lurus dan serong sejauh mungkin. Bidak terkuat, dan paling mudah diburu.','Jangkauan menakjubkan, garpu mematikan.','Keluar terlalu dini hanya membuatnya diusir berulang kali.'],
+['R','Benteng','5 poin','Bergerak lurus horizontal dan vertikal. Ia hidup di kolom terbuka dan baris ketujuh.','Sangat kuat di babak akhir bersama pion bebas.','Terkurung di sudut bila rokade tertunda.'],
+['B','Gajah','3 poin','Bergerak serong, selamanya di warna kotak yang sama. Sepasang gajah di papan terbuka sangat sulit dihadapi.','Jangkauan jauh, cocok untuk posisi terbuka.','Terhalang rantai pion sendiri, buta pada setengah papan.'],
+['N','Kuda','3 poin','Melompat berbentuk L dan satu-satunya yang boleh melewati bidak lain. Paling kuat dekat pusat.','Sempurna untuk garpu dan posisi tertutup.','Di tepi papan jangkauannya menyusut; lambat menyeberang jauh.'],
+['P','Pion','1 poin','Maju satu kotak (dua dari posisi awal), memakan serong. Tidak bisa mundur. Jiwa dari struktur permainan.','Bisa dipromosikan menjadi ratu.','Tak bisa mundur; struktur pion yang rusak sulit diperbaiki.']];
+function mv(t,c,r){const o=[],add=(a,b)=>a>=0&&a<8&&b>=0&&b<8&&o.push([a,b]),
+ ray=d=>d.forEach(([a,b])=>{for(let i=1;i<8;i++)add(c+a*i,r+b*i)}),O=[[1,0],[-1,0],[0,1],[0,-1]],D=[[1,1],[1,-1],[-1,1],[-1,-1]];
+ if(t=='K')[...O,...D].forEach(([a,b])=>add(c+a,r+b));
+ if(t=='Q')ray([...O,...D]);if(t=='R')ray(O);if(t=='B')ray(D);
+ if(t=='N')[[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]].forEach(([a,b])=>add(c+a,r+b));
+ if(t=='P'){add(c,r-1);add(c,r-2)}return o}
+const host=$('#pcs');
+P.forEach((p,i)=>{const[t,nm,val,tx,k,l]=p,s=document.createElement('div');s.className='pcard rv';
+ s.innerHTML=`<div class="rw ${i%2?'rv2':''}"><div><div class="g">${pcSvg(t)}</div><h3 style="font-size:2.6rem;color:var(--tx)">${nm}</h3><p>${tx}</p><div class="st"><div><b>Nilai</b>${val}</div><div><b>Kekuatan</b>${k}</div><div><b>Kelemahan</b>${l}</div></div></div><div class="bd"></div></div>`;
+ host.append(s);const bd=$('.bd',s);mkSq(bd);
+ const[c,r]=t=='P'?[4,6]:[3,4],e=mkPc(bd,'w'+t+F[c]+(8-r));
+ mv(t,c,r).forEach(([a,b])=>{const d=document.createElement('span');d.className='dt';d.style.cssText=`position:absolute;left:${a*12.5}%;top:${b*12.5}%;width:12.5%;height:12.5%;transition-delay:${(Math.abs(a-c)+Math.abs(b-r))*40}ms`;d.innerHTML='<i></i>';d.className='dt';bd.append(d)});
+ if(t=='P')[[3,5],[5,5]].forEach(([a,b])=>{const d=document.createElement('span');d.className='dt k';d.style.cssText=`position:absolute;left:${a*12.5}%;top:${b*12.5}%;width:12.5%;height:12.5%`;bd.append(d)});
+ bd.onmouseenter=()=>bd.classList.add('on');bd.onmouseleave=()=>bd.classList.remove('on');
+ bd.onclick=()=>{bd.classList.add('on');const m=mv(t,c,r),[a,b]=m[Math.floor(Math.random()*m.length)];e.style.left=a*12.5+'%';e.style.top=b*12.5+'%';setTimeout(()=>{e.style.left=c*12.5+'%';e.style.top=r*12.5+'%'},1500)};
+ bd.style.cursor='pointer';bd.tabIndex=0;bd.setAttribute('role','button');bd.setAttribute('aria-label','Lihat jangkauan gerak '+nm);bd.onfocus=()=>bd.classList.add('on');bd.onblur=()=>bd.classList.remove('on');bd.onkeydown=e=>{if(e.key=='Enter'||e.key==' '){e.preventDefault();bd.click()}}});
+// titik langkah: pastikan elemen .dt berposisi relatif terhadap papan
+const sty=document.createElement('style');sty.textContent='.bd>.dt{background:none}.bd>.dt::after{width:28%;height:28%}';document.head.append(sty);
+
+/* ===== EKSTRA INTERAKTIF: tur kuda, delapan ratu, butir gandum ===== */
+function xtra(card,h,p,btn){const x=document.createElement('div');x.className='xt';x.innerHTML=`<div><h3>${h}</h3><p>${p}</p><button class="rp">${btn}</button><button class="rp rs">Atur ulang</button><p class="mg" aria-live="polite" style="margin-top:1rem;color:var(--tx)"></p></div><div class="bd"></div>`;card.append(x);const bd=$('.bd',x);mkSq(bd);return{bd,mg:$('.mg',x),go:$('.rp',x),rs:$('.rs',x)}}
+(()=>{const{bd,mg,go,rs}=xtra(host.children[4],'Tur kuda','Mungkinkah satu kuda mengunjungi ke-64 kotak, masing-masing tepat sekali? Bisa, dan ada lebih dari 26 triliun rute tertutup yang berbeda. Tonton salah satunya.','▶ Jalankan tur');
+ const K=[[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]];
+ const nb=(c,r,u)=>K.map(([a,b])=>[c+a,r+b]).filter(([x,y])=>x>=0&&y>=0&&x<8&&y<8&&!u.has(x*8+y));
+ function tour(c,r,u,p){u.add(c*8+r);p.push([c,r]);if(p.length==64)return p;
+  for(const[x,y]of nb(c,r,u).sort((a,b)=>nb(a[0],a[1],u).length-nb(b[0],b[1],u).length))if(tour(x,y,u,p))return p;
+  u.delete(c*8+r);p.pop();return null}
+ let t=[],e;
+ function reset(){t.forEach(clearTimeout);t=[];$$('.pc',bd).forEach(x=>x.remove());$$('.v',bd).forEach(x=>{x.classList.remove('v');x.textContent=''});e=mkPc(bd,'wNa1');e.style.transition='left .25s,top .25s';mg.textContent=''}
+ go.onclick=()=>{reset();tour(0,7,new Set(),[]).forEach(([c,r],i)=>t.push(setTimeout(()=>{e.style.left=c*12.5+'%';e.style.top=r*12.5+'%';const s=$(`[data-s=${F[c]+(8-r)}]`,bd);s.classList.add('v');s.textContent=i+1;mg.textContent=i==63?'Selesai: 64 kotak, tak satu pun terulang.':`Langkah ${i+1} dari 64`},i*280)))};
+ rs.onclick=reset;reset()})();
+(()=>{const{bd,mg,go,rs}=xtra(host.children[1],'Delapan ratu','Tempatkan delapan ratu tanpa ada yang saling menyerang. Hanya ada 92 cara. Klik kotak untuk menaruh atau mengangkat ratu.','Tunjukkan satu solusi');
+ let q=new Set;const pr=k=>k.split(',').map(Number);
+ function draw(){$$('.pc',bd).forEach(x=>x.remove());$$('.kg',bd).forEach(x=>x.classList.remove('kg'));let bad=0;
+  q.forEach(k=>{const[c,r]=pr(k);mkPc(bd,'wQ'+F[c]+(8-r));
+   if([...q].some(o=>{const[a,b]=pr(o);return o!=k&&(a==c||b==r||Math.abs(a-c)==Math.abs(b-r))})){bad=1;$(`[data-s=${F[c]+(8-r)}]`,bd).classList.add('kg')}});
+  mg.textContent=q.size==8&&!bad?'Berhasil! Anda menemukan satu dari 92 solusi.':bad?'Ada ratu yang saling menyerang (kotak merah).':`${q.size} dari 8 ratu terpasang.`}
+ $$('[data-s]',bd).forEach(s=>s.onclick=()=>{const c=F.indexOf(s.dataset.s[0]),r=8-s.dataset.s[1],k=c+','+r;q.has(k)?q.delete(k):q.size<8&&q.add(k);draw()});
+ go.onclick=()=>{q=new Set([0,4,7,5,2,6,1,3].map((r,c)=>c+','+r));draw()};rs.onclick=()=>{q.clear();draw()};draw()})();
+(()=>{const r=$('#gr'),g=$('#gbar');for(let i=0;i<64;i++)g.append(document.createElement('i'));
+ const f=()=>{const n=+r.value,s=1n<<BigInt(n-1),t=(1n<<BigInt(n))-1n,L=x=>x.toLocaleString('id-ID');
+  $('#gk').textContent='Kotak '+n;$('#gv').textContent=L(s)+' butir di kotak ini';$('#gt').textContent='Total sampai di sini: '+L(t)+' butir';
+  [...g.children].forEach((e,i)=>e.classList.toggle('o',i<n))};r.oninput=f;f()})();
+
+/* ===== LATIHAN: TEMUKAN LANGKAHNYA ===== */
+(()=>{const root=$('#pz'),bd=$('.bd',root),q=$('.pq',root),mg=$('.pm',root);mkSq(bd);
+const Z=[
+{q:'Putih melangkah. Temukan skakmat dalam satu langkah.',set:['wKg1','wRd1','bKg8','bPf7','bPg7','bPh7'],a:['d1','d8'],ok:'Skakmat! Pion hitam sendiri mengurung rajanya.'},
+{q:'Putih melangkah. Serang raja dan benteng sekaligus.',set:['wKg1','wNb5','bKe8','bRa8'],a:['b5','c7'],ok:'Garpu kuda! Raja harus bergerak, benteng pun jatuh.'},
+{q:'Putih melangkah. Paku kuda hitam pada ratunya.',set:['wKg1','wBc1','bNf6','bQd8','bKe8'],a:['c1','g5'],ok:'Pin! Kuda tak berani bergerak karena ratu di belakangnya.'},
+{q:'Putih melangkah. Menangkan ratu hitam dengan serangan terbuka.',set:['wRe1','wNe5','wKg1','bQd7','bKe8'],a:['e5','d7'],ok:'Kuda memakan ratu sambil membuka skak dari benteng.'}];
+let i=0,sel=null,lock=0;
+function load(){lock=0;sel=null;$$('.pc',bd).forEach(x=>x.remove());$$('.v',bd).forEach(x=>x.classList.remove('v'));q.textContent=`Soal ${i+1} dari ${Z.length}: ${Z[i].q}`;mg.textContent='Klik bidak putih, lalu klik kotak tujuannya.';Z[i].set.forEach(c=>mkPc(bd,c))}
+$$('[data-s]',bd).forEach(s=>s.onclick=()=>{if(lock)return;const sq=s.dataset.s,z=Z[i];
+ if(!sel){if($(`.pc.w[data-sq=${sq}]`,bd)){sel=sq;s.classList.add('v');mg.textContent='Pilih kotak tujuan.'}return}
+ $$('.v',bd).forEach(x=>x.classList.remove('v'));
+ if(sel==z.a[0]&&sq==z.a[1]){lock=1;const p=$(`.pc[data-sq=${sel}]`,bd),x=$(`.pc[data-sq=${sq}]`,bd);if(x)x.classList.add('gone');put(p,sq);mg.textContent='Benar! '+z.ok}
+ else mg.textContent='Belum tepat. Pikirkan siapa yang bisa diserang, atau minta petunjuk.';
+ sel=null});
+$('.ph',root).onclick=()=>{if(lock)return;$$('.v',bd).forEach(x=>x.classList.remove('v'));$(`[data-s=${Z[i].a[0]}]`,bd).classList.add('v');mg.textContent='Petunjuk: gerakkan bidak di kotak yang menyala.'};
+$('.pn',root).onclick=()=>{i=(i+1)%Z.length;load()};load()})();
+
+/* ===== TIMELINE ===== */
+const T=[
+['± abad ke-6','Chaturanga, India','Di lembah-lembah India utara, para penasihat raja menata medan perang kecil di atas papan: gajah, kuda, kereta, dan prajurit pejalan kaki, mengelilingi satu raja yang tak boleh jatuh.|Tak ada catatan siapa penciptanya. Hanya keheningan di tempat nama itu seharusnya tertulis. Yang tersisa adalah gagasan yang ganjil: perang tanpa darah, dimainkan sambil duduk di bawah pohon, sampai senja.|Dari papan kecil itu, lebih dari empat belas abad pemikiran mengalir.'],
+['± abad ke-6–7','Persia: Shatranj','Konon, seorang raja India mengirim papan itu kepada raja Persia dengan tantangan: pecahkan rahasianya, atau akui kebijaksanaan kami lebih tinggi. Dalam kisah yang diabadikan Firdausi di Shahnameh, penasihat Persia memecahkannya.|Orang Persia menamainya shatranj dan menambahkan bahasa: seruan <em>shah</em>, sang raja, dan <em>mat</em>, tak berdaya. Dua kata kecil yang hidup lebih lama daripada kerajaan mana pun, kini kita ucapkan sebagai skakmat.|Kekalahan di papan, sejak itu, bukan kematian, melainkan ketakberdayaan.'],
+['abad ke-7–10','Dunia Arab','Ketika kekuasaan baru menyebar dari Persia ke barat, catur ikut berlayar. Di majelis khalifah dan rumah para cendekiawan, ia berhenti menjadi hiburan dan menjadi seni berpikir.|Pemain-pemain termasyhur, seperti as-Suli pada abad ke-10, dikenang namanya. Para penulis menyusun teka-teki posisi dan naskah yang diwariskan berabad-abad.|Lewat Spanyol dan Sisilia, papan itu menyeberang ke negeri-negeri yang belum pernah mendengar namanya.'],
+['abad ke-10–15','Eropa','Di Eropa, catur tiba dengan pakaian asing dan segera diberi jubah baru. Gajah menjadi uskup, kereta menjadi menara, dan penasihat raja menjadi seorang ratu.|Awalnya ratu hanya melangkah satu kotak, setia dan lemah. Lalu, menjelang akhir abad ke-15, di Spanyol dan Italia ia diberi kebebasan melangkah sejauh papan mengizinkan. Orang sezamannya menyebutnya catur yang gila.|Tak ada yang tahu persis mengapa. Yang pasti, sejak itu permainan menjadi lebih cepat, lebih tajam, dan jauh lebih berbahaya.'],
+['abad ke-19–kini','Era Modern','Pada 1851, para pemain dari berbagai negeri berkumpul di London untuk turnamen internasional pertama. Sejak itu catur punya panggung, juara, dan kisah yang diperdebatkan di kedai-kedai kopi seluruh dunia.|Wilhelm Steinitz menjadi juara dunia resmi pertama pada 1886; FIDE berdiri pada 1924. Pada 1972 di Reykjavik, Bobby Fischer duduk di seberang Boris Spassky, dan papan itu seakan memuat seluruh Perang Dingin.|Lalu mesin datang: Deep Blue pada 1997, AlphaZero pada 2017. Mereka tak mengakhiri catur. Mereka hanya mengingatkan bahwa permainan ini lebih dalam daripada yang dikira siapa pun yang pernah memainkannya.']];
+function mkTl(tbId,tpId,T){const tb=$(tbId),tp=$(tpId);
+T.forEach((t,i)=>{const b=document.createElement('button');b.textContent=i+1;b.setAttribute('aria-label',t[1]);b.onclick=()=>{$$('button',tb).forEach(x=>x.classList.remove('on'));b.classList.add('on');tp.style.opacity=0;setTimeout(()=>{tp.innerHTML=`<small>${t[0]}</small><h3>${t[1]}</h3>${t[2].split('|').map(x=>`<p>${x}</p>`).join('')}`;tp.style.opacity=1},300)};tb.append(b)});
+$('button',tb).click()}
+mkTl('#tlb','#tlp',T);
+mkTl('#tlb2','#tlp2',[
+['1770','The Turk','Wolfgang von Kempelen memamerkan “mesin” catur yang konon mengalahkan banyak bangsawan Eropa. Rahasianya: seorang pemain manusia bersembunyi di dalam kabinet. Mesin berpikir pertama ternyata ilusi.'],
+['1950','Gagasan Shannon','Claude Shannon menulis cara memprogram komputer bermain catur: menelusuri langkah ke depan, lalu menilai posisi. Kerangka ini bertahan puluhan tahun.'],
+['1997','Deep Blue','Deep Blue mengalahkan Garry Kasparov 3,5–2,5 dalam enam partai. Belakangan terungkap sebuah bug membuatnya mengambil langkah acak di partai pertama, dan langkah ganjil itu membuat Kasparov menduga mesin melihat jauh lebih dalam daripada kenyataannya.'],
+['2017','AlphaZero','Hanya diberi aturan, AlphaZero belajar dengan bermain melawan dirinya sendiri dan melampaui Stockfish 8 setelah sekitar empat jam latihan. Dalam 100 partai: 28 menang, 72 remis, tanpa kekalahan.'],
+['Kini','Guru yang tak pernah lelah','Mesin di ponsel sudah lebih kuat daripada juara dunia mana pun. Kini manusia memakainya untuk belajar, dan banyak pemain elit mengakui gaya agresif mesin memengaruhi cara mereka bermain.']]);
+
+/* ===== KONTEN BERULANG: FAKTA, MANFAAT, FAQ ===== */
+const card=(h,p)=>`<div class="cd rv"><h3>${h}</h3><p>${p}</p></div>`;
+$('#fk').innerHTML=[
+['Sepuluh pangkat seratus dua puluh','Claude Shannon memperkirakan sekitar 10¹²⁰ kemungkinan permainan. Lebih banyak daripada jumlah atom di alam semesta yang teramati.'],
+['Permainan 269 langkah','Nikolić melawan Arsović (Beograd, 1989) berlangsung lebih dari 20 jam dan berakhir remis, rekor terpanjang di turnamen resmi.'],
+['Empat puluh lima papan, mata tertutup','Miguel Najdorf pada 1947 bermain 45 papan sekaligus tanpa melihat satu pun, menang di 39 papan, selama hampir 24 jam.'],
+['Mat tercepat','“Mat si bodoh” hanya butuh dua langkah dari putih: sebuah kelalaian pembukaan yang terjadi pada pemula di seluruh dunia.'],
+['Ratu yang “gila”','Sebelum ±1475, ratu hanya melangkah satu kotak diagonal. Perubahan aturan yang menjadikannya sangat kuat disebut “catur gila” oleh orang sezamannya.'],
+['Gerbang kemungkinan','Setelah masing-masing pihak baru melangkah dua kali, sudah ada 197.281 urutan langkah yang mungkin.'],
+['Juara termuda','Gukesh Dommaraju menjadi juara dunia pada usia 18 tahun (2024), yang termuda dalam sejarah.'],
+['Putih unggul tipis','Karena melangkah lebih dulu, putih menang sedikit lebih sering di level tinggi, tetapi di level pemula hasilnya ditentukan kesalahan, bukan warna.']
+].map(a=>card(...a)).join('');
+$('#mf').innerHTML=[
+['Fokus yang dalam','Menjaga perhatian pada satu masalah dalam waktu lama, tanpa gangguan.'],
+['Berpikir ke depan','Membayangkan akibat sebelum bertindak, kebiasaan yang terbawa ke keputusan sehari-hari.'],
+['Ketenangan di bawah tekanan','Belajar tetap jernih saat waktu menipis dan posisi memburuk.'],
+['Kesabaran','Posisi yang bagus sering harus dipupuk lama sebelum berbuah.'],
+['Kerendahan hati','Setiap kekalahan menunjukkan dengan terang di mana pikiran Anda keliru.'],
+['Tanggung jawab','Tak ada yang bisa disalahkan selain keputusan Anda sendiri, dan itu membebaskan.']
+].map(a=>card(...a)).join('');
+$('#tk').innerHTML=[
+['Paul Morphy','Bintang Amerika yang pada 1858 menaklukkan para pemain terbaik Eropa. Partainya di gedung opera Paris masih diajarkan sebagai contoh sempurna pengembangan bidak. Tak lama kemudian ia menjauh dari catur serius.'],
+['Capablanca','Juara dunia asal Kuba (1921–1927). Permainannya tampak sederhana dan nyaris tanpa usaha, dan ia pernah bermain lebih dari delapan tahun tanpa kalah dalam partai serius.'],
+['Bobby Fischer','Pada usia 13 tahun memainkan partai yang dijuluki “Game of the Century” (1956). Pada 1972 di Reykjavik ia menjatuhkan dominasi catur Soviet, lalu menghilang dari papan turnamen.'],
+['Garry Kasparov','Juara dunia pada 1985 di usia 22 tahun dan lama memimpin peringkat dunia. Kekalahannya dari Deep Blue pada 1997 menjadi salah satu momen paling dikenang dalam sejarah komputer.'],
+['Judit Polgár','Perempuan terkuat dalam sejarah catur. Menjadi grandmaster pada usia 15 tahun, memecahkan rekor saat itu, dan pernah mengalahkan Kasparov pada 2002.'],
+['Magnus Carlsen','Grandmaster pada usia 13 tahun dan juara dunia 2013 sampai 2023. Rating tertingginya, 2882, belum pernah dilampaui siapa pun.']
+].map(a=>card(...a)).join('');
+$('#fq').innerHTML=[
+['Berapa lama waktu untuk bisa bermain dengan baik?','Aturan dasar bisa dipahami dalam satu sore. Bermain dengan percaya diri biasanya butuh beberapa bulan latihan teratur, dan menguasainya adalah perjalanan seumur hidup.'],
+['Apakah harus menghafal banyak pembukaan?','Tidak bagi pemula. Cukup pahami prinsip: pusat, pengembangan, rokade. Hafalan baru berguna ketika Anda mengerti mengapa langkah-langkahnya dipilih.'],
+['Apakah catur butuh kemampuan matematika?','Tidak. Yang dibutuhkan adalah pengenalan pola, imajinasi, dan kesabaran. Banyak juara tidak menonjol dalam matematika.'],
+['Apa bedanya pat dan skakmat?','Skakmat: raja diserang tanpa jalan keluar, dan Anda kalah. Pat: raja tidak diserang tetapi tak ada langkah sah, dan hasilnya remis.'],
+['Apa itu rating Elo?','Angka yang memperkirakan kekuatan pemain. Menang melawan pemain lebih kuat menaikkannya lebih banyak. Pemula biasanya di bawah 1000, klub di 1500 sampai 1800, dan grandmaster di atas 2500.'],
+['Bagaimana cara terbaik memulai?','Pelajari aturan, mainkan banyak partai, pecahkan soal taktik setiap hari, dan tinjau kekalahan Anda. Kekalahan yang dianalisis adalah guru terbaik.'],
+['Haruskah saya takut kalah?','Justru sebaliknya. Hampir semua kemajuan lahir dari partai yang Anda kalahkan dan Anda pahami sesudahnya.']
+].map(a=>`<details><summary>${a[0]}</summary><p>${a[1]}</p></details>`).join('');
+
+/* ===== TOC, PROGRESS, REVEAL ===== */
+const secs=$$('section[data-t]');
+$('#tl').innerHTML=secs.map(s=>`<li><a href="#${s.id}">${s.dataset.t}</a></li>`).join('');
+$('#tt').onclick=()=>{const c=$('#toc').classList.toggle('c');$('#tt').setAttribute('aria-expanded',!c)};
+$$('#tl a').forEach(a=>a.addEventListener('click',()=>{if(innerWidth<=1560){$('#toc').classList.add('c');$('#tt').setAttribute('aria-expanded',false)}}));
+let tk=0;addEventListener('scroll',()=>{if(tk)return;tk=requestAnimationFrame(()=>{tk=0;const y=scrollY,h=document.body.scrollHeight-innerHeight;$('#pg').style.width=y/h*100+'%';
+ $('#hero .w').style.transform=`translateY(${y*.25}px)`;
+ let a=secs[0].id;secs.forEach(s=>{if(s.getBoundingClientRect().top<innerHeight*.4)a=s.id});$$('#tl a').forEach(l=>l.classList.toggle('on',l.hash=='#'+a))})},{passive:true});
+const vo=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('vis',e.isIntersecting)));
+$$('#hero,.s h2').forEach(e=>vo.observe(e));
+document.addEventListener('visibilitychange',()=>document.documentElement.classList.toggle('hid',document.hidden));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+$$('.rv').forEach(e=>io.observe(e));
+</script>
+</body>
+</html>
